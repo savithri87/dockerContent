@@ -1,0 +1,17 @@
+# Use the official Apache image as the base
+FROM httpd:2.4
+
+# Set the working directory within the container
+WORKDIR /usr/local/apache2/htdocs
+
+# Copy your website files into the container
+COPY /root/dockerAssignment/dockerContent/Case-study app/blog.html /usr/local/apache2/htdocs
+
+# Expose port 80 (HTTP)
+EXPOSE 80
+
+# Define a volume for website data
+VOLUME /usr/local/apache2/htdocs
+
+# Start Apache in the foreground
+CMD ["httpd-foreground"]
